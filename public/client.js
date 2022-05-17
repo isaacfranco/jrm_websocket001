@@ -23,4 +23,8 @@ const ws = new WebSocket("ws://" + location.host);
             console.log('load')
             msg = document.getElementById('message');
             chat = document.getElementById('chat');
+<<<<<<< HEAD:public/client.js
         });
+=======
+        });
+>>>>>>> f771d0334905366c056a8eddd6aa42d184103e00:cliente.html
