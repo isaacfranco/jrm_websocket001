@@ -13,7 +13,8 @@ function onMessage(ws, data) {
         type: 'confirmation',
         data: 'Recebido'
     }));
-    console.log('json', json);
+    console.log('streaming to', clients.length, 'clients');
+    
     for (const client of clients) {
         console.log('envio?', data.toString());
         if (client != ws) {
@@ -24,11 +25,20 @@ function onMessage(ws, data) {
         }
     }
 }
+
+function onClose(ws, reasonCode, description) {
+    console.log(`onClose: ${reasonCode} - ${description}`);
+    const index = clients.indexOf(ws);
+    if (index > -1) {
+        clients.splice(index, 1);
+    }
+}
  
 function onConnection(ws, req) {
     clients.push(ws);
     ws.on('message', data => onMessage(ws, data));
     ws.on('error', error => onError(ws, error));
+    ws.on('close', (reasonCode, description) => onClose(ws, reasonCode, description));
     ws.send(JSON.stringify({
         type: 'connection',
         data: 'Bem vindo'
