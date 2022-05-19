@@ -7,18 +7,30 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
     <title>WS Client</title>
 
-    <script src="/client.js">
+    <!-- Estilos para os elementos do HTML -->
+    <style>
+        .mensagem {
+            border: 2px solid darkcyan;
+            background-color: azure;
+            margin-bottom: 10px;
+            padding: 3px;
+        }
+    </style>
+
+    <script src="/cliente.js">
         
         
     </script>
 </head>
 <body>
-    <input id="message" />
-    <button onClick="send()">
-        Send
-    </button>
+    
     <div id="chat">
 
     </div>
+    <input type="text" id="username" />
+    <input type="text" id="message" onkeydown="pressionouTecla(event)" />
+    <button onClick="send()" >
+        Enviar
+    </button>
 </body>
 </html>

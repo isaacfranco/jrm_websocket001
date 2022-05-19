@@ -17,12 +17,11 @@ function onMessage(ws, data) {
     
     for (const client of clients) {
         console.log('envio?', data.toString());
-        if (client != ws) {
-            client.send(JSON.stringify({
-                type: 'broadcast',
-                message: json.message
-            }));
-        }
+        client.send(JSON.stringify({
+            type: 'broadcast',
+            username: json.username,
+            message: json.message
+        }));
     }
 }
 

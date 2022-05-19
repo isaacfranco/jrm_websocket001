@@ -16,7 +16,11 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
- 
+
+app.get('/', (req, res) => {
+    res.redirect('/cliente.html');
+});
+
 app.post('/login', (req, res, next) => {
     res.json({ token: '123456' });
 });
