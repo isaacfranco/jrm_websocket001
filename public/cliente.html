@@ -9,11 +9,31 @@
 
     <!-- Estilos para os elementos do HTML -->
     <style>
-        .mensagem {
+        .mensagem-usuario {
             border: 2px solid darkcyan;
+            border-radius: 0.5em;
+            background-color: lightgreen;
+            margin-bottom: 10px;
+            padding: 3px;
+            float: right;
+            clear: both;
+        }
+        .mensagem-outro {
+            border: 2px solid lightgray;
+            border-radius: 0.5em;
             background-color: azure;
             margin-bottom: 10px;
             padding: 3px;
+            float: left;
+            clear: both;
+        }
+
+        #chat {
+            clear: both;
+        }
+
+        .nome-pessoa {
+            font-weight: bold;   
         }
     </style>
 
@@ -25,12 +45,35 @@
 <body>
     
     <div id="chat">
-
+        <div>
+            <div class="mensagem-outro">
+                <div class="nome-pessoa">Pessoa</div>
+                asd
+            </div>
+        </div>
+        <div>
+            <div class="mensagem-outro">
+                asd
+            </div>
+        </div>
+        <div>
+            <div class="mensagem-usuario">
+                asd
+            </div>
+        </div>
+        <div>
+            <div class="mensagem-outro">
+                asd
+            </div>
+        </div>
+        
     </div>
-    <input type="text" id="username" />
-    <input type="text" id="message" onkeydown="pressionouTecla(event)" />
-    <button onClick="send()" >
-        Enviar
-    </button>
+    <div id="actions" style="clear: both;">
+        Seu nome: <input type="text" id="username" style="width: 10em" /> <br/>
+        Mensagem: <input type="text" id="message" onkeydown="pressionouTecla(event)" style="width: 20em"/>
+        <button onClick="send()" >
+            Enviar
+        </button>
+    </div>
 </body>
 </html>

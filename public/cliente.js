@@ -9,10 +9,26 @@ ws.onmessage = (event) => {
     console.log('json', json);
     if (json.type == 'broadcast') {
         // cria a mensagem na tela.
-        const divMensagem = document.createElement("DIV");
-        divMensagem.className = "mensagem";
-        divMensagem.innerHTML = `${json.username}: ${json.message}`;
-        chat.appendChild(divMensagem);        
+        const divMensagemLinha = document.createElement("DIV");
+        const divMensagemNomePessoa = document.createElement("DIV");
+        const divMensagemConteudo = document.createElement("DIV");
+        
+        divMensagemNomePessoa.className = "nome-pessoa";
+        
+        if (json.username == username.value) {
+            divMensagemLinha.className = "mensagem-usuario";
+            divMensagemNomePessoa.innerHTML = "Você: ";
+        } else {
+            divMensagemLinha.className = "mensagem-outro";
+            divMensagemNomePessoa.innerHTML = `${json.username}: `;
+        } 
+
+        divMensagemConteudo.innerHTML = json.message;
+
+        divMensagemLinha.appendChild(divMensagemNomePessoa);
+        divMensagemLinha.appendChild(divMensagemConteudo);
+        
+        chat.appendChild(divMensagemLinha);        
     }
 }
 
